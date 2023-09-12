@@ -132,7 +132,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'BoutiqueApp/static'),
-    # '/var/www/static/',
+    '/var/www/static/',
 ]
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # Default primary key field type
