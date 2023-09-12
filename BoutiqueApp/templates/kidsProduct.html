@@ -1,0 +1,83 @@
+{% load static %}
+    {% block content %}
+
+    <!-- Start Header Area -->
+    {% include '__header.html' %}
+
+        <!-- ***** Products Area Starts ***** -->
+        <section class="section" id="products">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-heading" style="padding-top: 50px;">
+                            <h2>Our Latest Products</h2>
+                            <span>Check out all of our products.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row" style="display: flex; justify-content: space-around;">
+                    {% for product in products %}
+                    <div class="col-lg-4" style="width: 320px;">
+                        <div class="item" style="width: 290px;">
+                            <div class="thumb">
+                                <div class="hover-content">
+                                    <ul>
+                                        <li><a href="product/{{ product.uniqueID }}"><i class="fa fa-eye"></i></a></li>
+                                        <!-- <li><a href="single-product.html"><i class="fa fa-star"></i></a></li> -->
+                                        <li><a href="product/{{ product.uniqueID }}"><i class="fa fa-shopping-cart"></i></a></li>
+                                    </ul>
+                                </div>
+                                <img src="{{ product.Image.url }}" alt="" style="height: 300px; width: 290px;">
+                            </div>
+                            <div class="down-content">
+                                <h4>{{ product.Name }}</h4>
+                                <span>${{ product.Price }}.00</span>
+                                <ul class="stars">
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                    <div class="col-lg-12">
+                        <div class="pagination">
+                            <ul>
+                                {% if products.has_next and not products.has_previous %}
+                                <li>
+                                    <a href="?page={{ products.next_page_number }}">More</a>
+                                </li>
+                                {% endif %}
+                                {% if products.has_previous and not products.has_next %}
+                                <li style="padding-left: 20px; padding-right: 20px;">
+                                    <a href="?page={{ products.previous_page_number }}" >Back</a>
+                                </li>
+                                {% endif %}
+                                {% if products.has_previous and products.has_next %}
+                                <li>
+                                    <a href="?page={{ products.previous_page_number }}"><</a>
+                                </li>
+                                <li>
+                                    <a href="?page={{ products.next_page_number }}">></a>
+                                </li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ***** Products Area Ends ***** -->
+        
+    
+    <!-- footer section start -->
+    {% include '__footer.html' %}
+     <!-- footer section end -->
+    </div>
+{% endblock %}

@@ -1,0 +1,98 @@
+{% load static %}
+    {% block content %}
+
+     <!-- Start Header Area -->
+   
+
+     {% include '__header.html' %}
+
+<!-- ***** Product Area Starts ***** -->
+<section class="section" id="product">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+            <div class="left-images">
+                <img src="{{ product.Image.url }}" alt="{{ product.Name }}" id="image1">
+                <!-- <img src="assets/images/single-product-02.jpg" alt=""> -->
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="right-content">
+                <h4>{{ product.Name }}</h4>
+                <ul class="stars">
+                    <li><i class="fa fa-star"></i></li>
+                    <li><i class="fa fa-star"></i></li>
+                    <li><i class="fa fa-star"></i></li>
+                    <li><i class="fa fa-star"></i></li>
+                    <li><i class="fa fa-star"></i></li>
+                </ul>
+                <span>Our products are always unique and are being sold at a cheaper rate.  Place your order and get the best shopping experience you've been craving from Boutique accessories store.</span>
+                <span>If you need more clarification on any product displayed in this web page or need to report any issue, you can reach out to us through the contact page.</span>
+                <div class="quote">
+                    <i class="fa fa-quote-left"></i><p>Dress the way you want to be adressed, your appearance speaks more at your first sight.</p>
+                </div>
+                {% load widget_tweaks %}
+                <form method="POST">
+                {% csrf_token %}
+                <div class="quantity-content">
+                    <div class="left-content">
+                        <h6>No. of Orders</h6>
+                    </div>
+                    <div class="right-content">
+                        <div class="quantity buttons_added">
+                            <input type="number" step="1" min="1" max="" name="quantity" value="1" title="Qty" class="input-text qty text" size="4" pattern="" inputmode="" style="height: 0px; width: 0px; border: 0px;">
+                            <input type="button" value="-" class="minus">{% render_field orderForm.NoOfStock value="1" class="input-text qty text" size="4" inputmode="" type="text"%}<input type="button" value="+" class="plus">
+                        </div>
+                    </div>
+                </div>
+                {% render_field optionForm.PaymentOption class="input-text qty text" size="4" inputmode="" type="text"%}
+                <div class="total">
+                    <h4 class="totalprice" title="tot">Price Per Stock: ${{ product.Price }}.00</h4>
+                    <div class="main-border-button" style="padding-top: 50px; margin-top: 20px;"></div>
+                    <section id="explore" style="margin: 0px; padding: 0px; display: flex; justify-content: space-around;">                
+                        <div class="" style="display: flex; justify-content: center;">
+                            <div class="main-border-button">
+                                <!-- <a href="products">Place Order</a> -->
+                                <input type="submit" value="Place Order" style="  font-size: 13px;
+                                color: #2a2a2a;
+                                background-color: #fff;
+                                padding: 12px 25px;
+                                display: inline-block;
+                                border-radius: 3px;
+                                font-weight: 600;
+                                margin-top: 30px;
+                                transition: all .3s;">
+                            </div>
+                        </div>    
+                    </section>
+                </div>
+                </form>
+            </div>
+        </div>
+        </div>
+    </div>
+</section>
+<!-- ***** Product Area Ends ***** -->
+
+<script>
+
+    $(function() {
+        var selectedClass = "";
+        $("p").click(function(){
+        selectedClass = $(this).attr("data-rel");
+        $("#portfolio").fadeTo(50, 0.1);
+            $("#portfolio div").not("."+selectedClass).fadeOut();
+        setTimeout(function() {
+          $("."+selectedClass).fadeIn();
+          $("#portfolio").fadeTo(50, 1);
+        }, 500);
+            
+        });
+    });
+
+</script>
+  <!-- footer section start -->
+  {% include '__footer.html' %}
+  <!-- footer section end -->
+ </div>
+{% endblock %}
