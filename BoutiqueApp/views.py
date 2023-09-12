@@ -159,7 +159,7 @@ def singleProductView(request, uniqueID):
             product.Stock_Number = str(int(product.Stock_Number) - int(stock))
             product.save()    
 
-    return render(request, "singleProduct.html", { 'optionForm':optionForm, 'orderForm':orderForm, 'subscriberForm': subscriberForm , 'product':product })
+    return render(request, "singleProduct.html", {'orderForm':orderForm, 'subscriberForm': subscriberForm , 'product':product })
 
 
 def aboutView(request):
