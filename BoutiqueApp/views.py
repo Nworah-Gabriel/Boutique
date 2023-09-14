@@ -17,7 +17,7 @@ def indexView(request):
     if request.method == 'POST':
         if subscriberForm.is_valid():
             subscriberForm.save()
-            return render(request, "SusbscribersAlert.html", {'ContactForm':form, 'subscriberForm': subscriberForm })
+            return render(request, "SusbscribersAlert.html", {'subscriberForm': subscriberForm })
 
     MenAccessories =  Product.objects.filter(Category="Men").order_by("-Date_Pub")
     paginator1 = Paginator(MenAccessories, 3)
@@ -54,7 +54,7 @@ def productView(request):
     if request.method == 'POST':
         if subscriberForm.is_valid():
             subscriberForm.save()
-            return render(request, "SusbscribersAlert.html", {'ContactForm':form, 'subscriberForm': subscriberForm })
+            return render(request, "SusbscribersAlert.html", {'subscriberForm': subscriberForm })
 
     Products =  Product.objects.all().order_by("-Date_Pub")
     paginator = Paginator(Products, 9)
@@ -77,7 +77,7 @@ def menProductView(request):
     if request.method == 'POST':
         if subscriberForm.is_valid():
             subscriberForm.save()
-            return render(request, "SusbscribersAlert.html", {'ContactForm':form, 'subscriberForm': subscriberForm })
+            return render(request, "SusbscribersAlert.html", {'subscriberForm': subscriberForm })
 
     Products =  Product.objects.filter(Category="Men").order_by("-Date_Pub")
     paginator = Paginator(Products, 9)
@@ -100,7 +100,7 @@ def womenProductView(request):
     if request.method == 'POST':
         if subscriberForm.is_valid():
             subscriberForm.save()
-            return render(request, "SusbscribersAlert.html", {'ContactForm':form, 'subscriberForm': subscriberForm })
+            return render(request, "SusbscribersAlert.html", {'subscriberForm': subscriberForm })
 
     Products =  Product.objects.filter(Category="Women").order_by("-Date_Pub")
     paginator = Paginator(Products, 9)
@@ -123,7 +123,7 @@ def kidProductView(request):
     if request.method == 'POST':
         if subscriberForm.is_valid():
             subscriberForm.save()
-            return render(request, "SusbscribersAlert.html", {'ContactForm':form, 'subscriberForm': subscriberForm })
+            return render(request, "SusbscribersAlert.html", {'subscriberForm': subscriberForm })
 
     Products =  Product.objects.filter(Category="Kids").order_by("-Date_Pub")
     paginator = Paginator(Products, 9)
@@ -147,7 +147,7 @@ def singleProductView(request, uniqueID):
     if request.method == 'POST':
         if subscriberForm.is_valid():
             subscriberForm.save()
-            return render(request, "SusbscribersAlert.html", {'ContactForm':form, 'subscriberForm': subscriberForm })
+            return render(request, "SusbscribersAlert.html", {'subscriberForm': subscriberForm })
 
     orderForm = OrderForm(request.POST)
 
@@ -179,7 +179,7 @@ def aboutView(request):
     if request.method == 'POST':
         if subscriberForm.is_valid():
             subscriberForm.save()
-            return render(request, "SusbscribersAlert.html", {'ContactForm':form, 'subscriberForm': subscriberForm })
+            return render(request, "SusbscribersAlert.html", {'subscriberForm': subscriberForm })
 
     return render(request, "about.html", { 'subscriberForm': subscriberForm })
 
