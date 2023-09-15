@@ -177,8 +177,6 @@ def order(request, id):
 
     # ---FOR EMAIL SUBSCRIBING---#
     subscriberForm = SubscriberForm(request.POST)
-    product =  Order.objects.get(uniqueID=id)
-    
     if request.method == 'POST':
         if subscriberForm.is_valid():
             subscriberForm.save()
