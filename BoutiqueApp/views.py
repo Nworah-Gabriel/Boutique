@@ -166,7 +166,7 @@ def singleProductView(request, uniqueID):
             product.save()
             product.Stock_Number = str(int(product.Stock_Number) - int(stock))
             product.save()
-            return HttpResponseRedirect(f"https://boutique-63is.onrender.com/order/{get_id}")
+            return HttpResponseRedirect(f"http://127.0.0.1:8000/order/{get_id}")
 
     return render(request, "singleProduct.html", {'orderForm':orderForm, 'subscriberForm': subscriberForm , 'product':product })
 
@@ -208,7 +208,7 @@ def order(request, id):
 
             return render(request, "alert.html", {'orderForm2':orderForm2, 'subscriberForm': subscriberForm , 'product':product })
 
-    return render(request, "orderpage.html", {'orderForm2':orderForm2, 'subscriberForm': subscriberForm , 'product':product })
+    return render(request, "page.html", {'orderForm2':orderForm2, 'subscriberForm': subscriberForm , 'product':product })
 
 def aboutView(request):
     """
