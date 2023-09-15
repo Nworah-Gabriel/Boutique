@@ -62,8 +62,8 @@ figure, header, nav, section, article, aside, footer, figcaption {
 
 @media (min-width:900px){
   #image1{
-    height: 300px;
-    width: 300px;
+    height: 700px;
+    width: 700px;
   }
   #image2{
     height: 368px;

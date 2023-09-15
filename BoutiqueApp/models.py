@@ -78,6 +78,11 @@ class Order(models.Model):
     Price = models.CharField(max_length=50, null=False, blank=True)
     NoOfStock = models.CharField(max_length=50, null=True, blank=True)
     Date_Pub = models.DateTimeField(default=datetime.now(), editable=False, blank=True)
+    Delivery_Adress = models.CharField(max_length=400, default="", blank=True)
+    Country = models.CharField(max_length=200, default="", blank=True)
+    state = models.CharField(max_length=200, default="", blank=True)
+    LGA = models.CharField(max_length=200, default="", blank=True)
+    Zip_Code = models.CharField(max_length=200, default="", blank=True)
 
     def __str__(self):
         """

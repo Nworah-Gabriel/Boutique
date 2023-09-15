@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponseRedirect 
-from .forms import ContactForm, SubscriberForm, OrderForm
+from .forms import ContactForm, SubscriberForm, OrderForm, OrderForm2
 from .models import Product, Order
 from django.core.paginator import Paginator
 from django.views.generic import DetailView
@@ -150,7 +150,6 @@ def singleProductView(request, uniqueID):
             return render(request, "SusbscribersAlert.html", {'subscriberForm': subscriberForm })
 
     orderForm = OrderForm(request.POST)
-
     if request.method == 'POST':
         
         if orderForm.is_valid():
@@ -161,12 +160,55 @@ def singleProductView(request, uniqueID):
                 Price=(int(product.Price) * int(stock)),
                 NoOfStock=stock
                 )
+            get_id = NewOrder.uniqueID
             NewOrder.save()
             product.Stock_Number = str(int(product.Stock_Number) - int(stock))
-            product.save()    
+            product.save()
+            product.Stock_Number = str(int(product.Stock_Number) - int(stock))
+            product.save()
+            return HttpResponseRedirect(f"https://boutique-63is.onrender.com/order/{get_id}")
 
     return render(request, "singleProduct.html", {'orderForm':orderForm, 'subscriberForm': subscriberForm , 'product':product })
 
+def order(request, id):
+    """
+    A functional based view for the order competion
+    """
+
+    # ---FOR EMAIL SUBSCRIBING---#
+    subscriberForm = SubscriberForm(request.POST)
+    product =  Order.objects.get(uniqueID=id)
+    
+    if request.method == 'POST':
+        if subscriberForm.is_valid():
+            subscriberForm.save()
+            return render(request, "SusbscribersAlert.html", {'subscriberForm': subscriberForm })
+
+    #DATABASE QUERY
+    OrderAppend = Order.objects.get(uniqueID=id)
+    orderForm2 = OrderForm2(request.POST)
+
+    if orderForm2.is_valid():
+            ADDRESS = orderForm2.cleaned_data['Delivery_Address']
+            COUNTRY = orderForm2.cleaned_data['Country']
+            STATE = orderForm2.cleaned_data['state']
+            LGA = orderForm2.cleaned_data['LGA']
+            CODE = orderForm2.cleaned_data['Zip_Code']
+            MobileNo = orderForm2.cleaned_data['MobileNo']
+            Mail = orderForm2.cleaned_data['ClientEmail']
+
+             #APPENDING DATA
+            OrderAppend.ClientEmail = Mail
+            OrderAppend.MobileNo = MobileNo
+            OrderAppend.Delivery_Adress = ADDRESS
+            OrderAppend.Country = COUNTRY
+            OrderAppend.state = STATE
+            OrderAppend.LGA = LGA
+            OrderAppend.Zip_Code = CODE
+
+            return render(request, "alert.html", {'orderForm2':orderForm2, 'subscriberForm': subscriberForm , 'product':product })
+
+    return render(request, "OrderPage.html", {'orderForm2':orderForm2, 'subscriberForm': subscriberForm , 'product':product })
 
 def aboutView(request):
     """

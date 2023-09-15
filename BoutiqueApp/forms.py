@@ -28,7 +28,16 @@ class OrderForm(forms.Form):
     A class based form for capturing data and storing in the database
     """
 
-    choice = {('Pay on delivery','Pay on delivery'), ('Instant payment','Inatant payment'),}
-
-    PayOption = forms.CharField(max_length=50)
     NoOfStock = forms.CharField(max_length=50)
+
+class OrderForm2(forms.Form):
+    """
+    A class based form for capturing data and storing in the database
+    """
+    ClientEmail =  forms.CharField(max_length=200)
+    MobileNo =  forms.CharField(max_length=200)
+    Delivery_Address = forms.CharField(max_length=400)
+    Country = forms.CharField(max_length=200)
+    state = forms.CharField(max_length=200)
+    LGA = forms.CharField(max_length=200)
+    Zip_Code = forms.CharField(max_length=200)

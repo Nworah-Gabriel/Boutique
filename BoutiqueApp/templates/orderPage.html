@@ -1,0 +1,94 @@
+{% load static %}
+    {% block content %}
+
+    <!-- Start Header Area -->
+    {% include '__header.html' %}
+    <!-- End Header Area -->
+
+     <!-- ***** Contact Area Starts ***** -->
+     <div class="contact-us">
+        <div class="container">
+            <div class="row" style="display: flex; justify-content: space-around;">
+                <div class="col-lg-8">
+                    <div class="section-heading">
+                        <h2 style="display: flex; justify-content: space-around;">Place Your Order!</h2>
+                        <div style="padding-top: 20px; text-align: center;">
+                            <span style="padding-top: 20px;">If you need more clarification on any product displayed in this web page or need to report any issue, you can reach out to us through this page.</span>
+                        </div>
+                    </div>
+                    {% load widget_tweaks %}
+                    <form id="contact" action="" method="POST">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-lg-6" style="padding-top: 20px;">
+                                <fieldset>
+                                    {% render_field orderForm2.ClientEmail id="email" placeholder="Your Email Address" type="email" %}
+                                    <!-- <input name="email" type="text" id="email" placeholder="Your email" required=""> -->
+                                </fieldset>
+                              </div>
+                          <div class="col-lg-6" style="padding-top: 20px;">
+                            <fieldset>
+                                {% render_field orderForm2.MobileNo id="name" placeholder="Your Mobile No" type="text" %}
+                              <!-- <input name="name" type="text" id="name" placeholder="Your name" required=""> -->
+                            </fieldset>
+                          </div>
+                          <div class="col-lg-12" style="padding-top: 20px;">
+                            <fieldset>
+                                {% render_field orderForm2.Country id="name" placeholder="Country" type="text" %}
+                              <!-- <input name="subject" type="text" id="name" placeholder="Subject" required=""> -->
+                            </fieldset>
+                          </div>
+                          <div class="col-lg-12" style="padding-top: 20px;">
+                            <fieldset>
+                                {% render_field orderForm2.state id="name" placeholder="State" type="text" %}
+                              <!-- <input name="subject" type="text" id="name" placeholder="Subject" required=""> -->
+                            </fieldset>
+                          </div>
+                          <div class="col-lg-12" style="padding-top: 20px;">
+                            <fieldset>
+                                {% render_field orderForm2.LGA id="name" placeholder="L.G.A" type="text" %}
+                              <!-- <input name="subject" type="text" id="name" placeholder="Subject" required=""> -->
+                            </fieldset>
+                          </div>
+                          <div class="col-lg-12" style="padding-top: 20px;">
+                            <fieldset>
+                                {% render_field orderForm2.Zip_Code id="name" placeholder="ZIP Code" type="text" %}
+                              <!-- <input name="subject" type="text" id="name" placeholder="Subject" required=""> -->
+                            </fieldset>
+                          </div>
+                          <div class="col-lg-12" style="padding-top: 20px;">
+                            <fieldset>
+                                {% render_field orderForm2.Delivery_Address id="name" placeholder="Delivery Home Address" type="text" %}
+                              <!-- <input name="subject" type="text" id="name" placeholder="Subject" required=""> -->
+                            </fieldset>
+                          </div>
+                          <div class="col-lg-12"  style="display: flex; justify-content: space-around;">
+                            <fieldset style="display: flex; justify-content: space-around;">
+                                <div class="main-border-button">
+                                    <!-- <a href="products">Place Order</a> -->
+                                    <input type="submit" value="Pay On Delivery" style="  font-size: 13px;
+                                    color: #2a2a2a;
+                                    background-color: #fff;
+                                    /* padding: 12px 15px; */
+                                    padding-bottom: 20px;
+                                    display: inline-block;
+                                    border-radius: 3px;
+                                    font-weight: 600;
+                                    margin-top: 30px;
+                                    transition: all .3s;">
+                                </div>
+                            </fieldset>
+                          </div>
+                        </div>
+                      </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ***** Contact Area Ends ***** -->
+
+    <!-- footer section start -->
+    {% include '__footer.html' %}
+    <!-- footer section end -->
+ </div>
+{% endblock %}

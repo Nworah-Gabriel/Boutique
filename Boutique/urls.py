@@ -17,7 +17,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from BoutiqueApp.views import indexView, menProductView, alertView, womenProductView, kidProductView, aboutView, productView, contactView, singleProductView
+from BoutiqueApp.views import indexView, menProductView, alertView, womenProductView, kidProductView, aboutView, productView, contactView, singleProductView, order
 from django.conf.urls.static import static
 from django.conf import settings
 urlpatterns = [
@@ -26,6 +26,7 @@ urlpatterns = [
     path('about', aboutView),
     path('products', productView),
     path('men', menProductView),
+     path('order/<str:id>', order),
     path('women', womenProductView),
     path('kid', kidProductView),
     path('contact', contactView),
