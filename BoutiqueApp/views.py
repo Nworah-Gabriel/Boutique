@@ -208,7 +208,7 @@ def order(request, id):
 
             return render(request, "alert.html", {'orderForm2':orderForm2, 'subscriberForm': subscriberForm , 'product':product })
 
-    return render(request, "OrderPage.html", {'orderForm2':orderForm2, 'subscriberForm': subscriberForm , 'product':product })
+    return render(request, "orderpage.html", {'orderForm2':orderForm2, 'subscriberForm': subscriberForm , 'product':product })
 
 def aboutView(request):
     """
