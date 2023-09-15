@@ -175,6 +175,8 @@ def order(request, id):
     A functional based view for the order competion
     """
 
+    product = Order.objects.get(uniqueID=id)
+
     # ---FOR EMAIL SUBSCRIBING---#
     subscriberForm = SubscriberForm(request.POST)
     if request.method == 'POST':
